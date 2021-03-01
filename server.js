@@ -1,16 +1,22 @@
 import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
+import morgan from 'morgan'
 import colors from 'colors'
 import connectDB from './config/db.js'
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js'
 import userRoutes from './routes/userRoutes.js'
+import caseRoutes from './routes/caseRoutes.js'
 
 dotenv.config()
 
 connectDB()
 
 const app = express()
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
 
 app.use(express.json())
 
@@ -19,6 +25,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/users', userRoutes)
+app.use('/api/case', caseRoutes)
 
 // make upload folder acceble in the browser, make it static
 // const __dirname = path.resolve() //so we can us es module

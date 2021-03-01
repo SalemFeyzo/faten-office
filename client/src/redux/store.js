@@ -1,10 +1,18 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { userLoginReducer } from './reducers/userReducers'
+import {
+  userDetailsReducer,
+  userLoginReducer,
+  userUpdateReducer,
+} from './reducers/userReducers'
+import { accountsListReducer } from './reducers/accountReducers'
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
+  userDetails: userDetailsReducer,
+  userUpdate: userUpdateReducer,
+  accountsList: accountsListReducer,
 })
 
 const PREFIX = 'faten-'
