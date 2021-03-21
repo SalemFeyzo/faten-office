@@ -3,16 +3,50 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   userDetailsReducer,
+  userListReducer,
   userLoginReducer,
   userUpdateReducer,
 } from './reducers/userReducers'
-import { accountsListReducer } from './reducers/accountReducers'
+import {
+  accountAddReducer,
+  accountDetailsReducer,
+  accountsListReducer,
+} from './reducers/accountReducers'
+import {
+  interactionAddIOReducer,
+  interactionAddReducer,
+  interactionDeleteReducer,
+  interactionDetailsReducer,
+  interactionListByAccountReducer,
+  interactionListByDateReducer,
+  interactionListByTypeReducer,
+  interactionListByUserReducer,
+  interactionListReducer,
+  interactionUpdateReducer,
+  totalByAccoountReducer,
+  totalsReducer,
+} from './reducers/interactionReducers'
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userDetails: userDetailsReducer,
+  userList: userListReducer,
   userUpdate: userUpdateReducer,
   accountsList: accountsListReducer,
+  accountDetails: accountDetailsReducer,
+  accountAdd: accountAddReducer,
+  interactionAdd: interactionAddReducer,
+  interactionUpdate: interactionUpdateReducer,
+  interactionDetails: interactionDetailsReducer,
+  interactionDelete: interactionDeleteReducer,
+  interactionList: interactionListReducer,
+  interactionListByAccount: interactionListByAccountReducer,
+  interactionListByDate: interactionListByDateReducer,
+  interactionListByUser: interactionListByUserReducer,
+  interactionListByType: interactionListByTypeReducer,
+  interactionAddIO: interactionAddIOReducer,
+  totalByAccount: totalByAccoountReducer,
+  totals: totalsReducer,
 })
 
 const PREFIX = 'faten-'

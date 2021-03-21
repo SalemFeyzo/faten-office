@@ -25,7 +25,7 @@ const LoginPage = ({ history }) => {
 
   return (
     <FormContainer>
-      <h1>تسجيل الدخول</h1>
+      <h4>تسجيل الدخول</h4>
       {loading && <Loader />}
       {error && <Message variant='danger'>{error}</Message>}
       <Form onSubmit={onSubmitHandler}>

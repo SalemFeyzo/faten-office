@@ -23,7 +23,7 @@ export const authUser = asyncHandler(async (req, res) => {
 })
 
 // @desc Get user Details
-// @route POST /api/users/:id
+// @route GET /api/users/:id
 // @access Private
 export const getUserDetails = asyncHandler(async (req, res) => {
   const { id } = req.params
@@ -64,5 +64,18 @@ export const updateUser = asyncHandler(async (req, res) => {
   } else {
     res.status(404)
     throw new Error('المستخدم غير موجود')
+  }
+})
+
+// @desc Get All Users
+// @route GET /api/users
+// @access Private
+export const getAllUsers = asyncHandler(async (req, res) => {
+  const user = await User.find({}).select('-password')
+  if (user) {
+    res.json(user)
+  } else {
+    res.status(404)
+    throw Error('المستخدم غير موجود')
   }
 })

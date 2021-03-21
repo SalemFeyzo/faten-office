@@ -51,7 +51,7 @@ const Profile = ({ history, match }) => {
   }
   return (
     <FormContainer>
-      <h1>تعديل الملف الشخصي</h1>
+      <h4>تعديل الملف الشخصي</h4>
       {loadingDetails && <Loader />}
       {message && <Message variant='danger'>{message}</Message>}
       <Form onSubmit={onSubmitHandler}>

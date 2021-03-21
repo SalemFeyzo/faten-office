@@ -26,3 +26,39 @@ h3 {
   justify-content: space-between;
   align-items: center;
 }
+.input {
+  color: green;
+}
+.output {
+  color: red;
+}
+
+.sidebar-opened {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  background-color: rgb(230, 251, 239);
+  right: 0;
+  width: 40vw;
+  height: 100vh;
+  transition: width 0.5s;
+}
+.sidebar-closed {
+  position: absolute;
+  right: -250px;
+  display: block;
+  z-index: 2;
+  background-color: rgb(230, 251, 239);
+  width: 0;
+  height: 100vh;
+  transition: width 0.5s;
+}
+@media only screen and (max-width: 600px) {
+  .flex-xsm-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-opened {
+    width: 100vw;
+  }
+}

@@ -46,9 +46,16 @@ const Header = () => {
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='ml-auto'>
+                <LinkContainer to='/account/summary'>
+                  <Nav.Link>الموجز</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/dashboard'>
+                  <Nav.Link>جميع الحركات</Nav.Link>
+                </LinkContainer>
                 <LinkContainer to='/accounts'>
                   <Nav.Link>الحسابات</Nav.Link>
                 </LinkContainer>
+
                 <NavDropdown title={icon} id='username'>
                   <LinkContainer to={`/dashboard/profile/${userInfo._id}`}>
                     <NavDropdown.Item>الملف الشخصي</NavDropdown.Item>
