@@ -3,9 +3,13 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import users from './data/users.js'
 import accounts from './data/accounts.js'
+import currencies from './data/currencies.js'
+import capital from './data/capital.js'
 import User from './models/userModel.js'
 import Interaction from './models/interactionModel.js'
 import Account from './models/accountModel.js'
+import Currency from './models/currencyModel.js'
+import Capital from './models/capitalModel.js'
 import connectDB from './config/db.js'
 
 dotenv.config()
@@ -17,6 +21,8 @@ const importData = async () => {
     await User.deleteMany()
     await Account.deleteMany()
     await Interaction.deleteMany()
+    await Currency.deleteMany()
+    await Capital.deleteMany()
 
     const createdUsers = await User.insertMany(users)
     const adminUser = createdUsers[0]._id
@@ -25,6 +31,8 @@ const importData = async () => {
     })
 
     await Account.insertMany(sampleAccounts)
+    await Currency.insertMany(currencies)
+    await Capital.insertMany(capital)
     console.log('Data imported!'.green.inverse)
     process.exit()
   } catch (error) {
@@ -38,6 +46,8 @@ const destroyData = async () => {
     await Account.deleteMany()
     await User.deleteMany()
     await Interaction.deleteMany()
+    await Currency.deleteMany()
+    await Capital.deleteMany()
     console.log('Data destroyed!'.red.inverse)
     process.exit()
   } catch (error) {

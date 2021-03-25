@@ -34,6 +34,9 @@ import {
   TOTAL_BY_ACCOUNT_REQUEST,
   TOTAL_BY_ACCOUNT_SUCCESS,
   TOTAL_FAIL,
+  TOTAL_PRIMARY_FAIL,
+  TOTAL_PRIMARY_REQUEST,
+  TOTAL_PRIMARY_SUCCESS,
   TOTAL_REQUEST,
   TOTAL_SUCCESS,
 } from '../constants/interactionConstants'
@@ -354,6 +357,32 @@ export const getTotals = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: TOTAL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const getPrimaryTotal = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: TOTAL_PRIMARY_REQUEST })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+    const config = {
+      headers: {
+        'Content-type': 'Application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+    const { data } = await axios.get(`/api/interactions/primary/total`, config)
+    dispatch({ type: TOTAL_PRIMARY_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: TOTAL_PRIMARY_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

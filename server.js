@@ -9,6 +9,8 @@ import { notFound, errorHandler } from './middlewares/errorMiddleware.js'
 import userRoutes from './routes/userRoutes.js'
 import accountRoutes from './routes/accountRoutes.js'
 import interactionRoutes from './routes/interactionRoutes.js'
+import currencyRoutes from './routes/currencyRoutes.js'
+import capitalRoutes from './routes/capitalRoutes.js'
 
 dotenv.config()
 
@@ -31,6 +33,8 @@ app.use(express.json())
 app.use('/api/users', userRoutes)
 app.use('/api/accounts', accountRoutes)
 app.use('/api/interactions', interactionRoutes)
+app.use('/api/capital', capitalRoutes)
+app.use('/api/currencies', currencyRoutes)
 
 // make upload folder acceble in the browser, make it static
 // const __dirname = path.resolve() //so we can us es module

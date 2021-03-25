@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Interaction from '../models/interactionModel.js'
+import Currency from '../models/currencyModel.js'
 
 // @desc Add Interaction
 // @route POST /api/interactions
@@ -302,6 +303,8 @@ export const getAllAccountsTotal = asyncHandler(async (req, res) => {
       path: 'IOs',
       populate: { path: 'account' },
     })
+  const currencies = await Currency.find({})
+
   if (interactions) {
     const ios = interactions.map((interaction) => interaction.IOs)
     const maregedIos = [].concat.apply([], ios)
@@ -370,6 +373,21 @@ export const getAllAccountsTotal = asyncHandler(async (req, res) => {
     const syrTotal = addDecimal(syrTotalInputs - syrTotalOutputs)
     const llTotal = addDecimal(llTotalInputs - llTotalOutputs)
 
+    const allCurrencies = currencies[0]
+    const tlUsd = addDecimal(tlTotal / allCurrencies.tlUsd)
+    const euroUsd = addDecimal(euroTotal / allCurrencies.euroUsd)
+    const syrUsd = addDecimal(syrTotal / allCurrencies.syrUsd)
+    const llUsd = addDecimal(llTotal / allCurrencies.llUsd)
+    const totalAllAccounts = addDecimal(
+      [
+        Number(usdTotal),
+        Number(tlUsd),
+        Number(euroUsd),
+        Number(syrUsd),
+        Number(llUsd),
+      ].reduce((acc, item) => acc + item, 0)
+    )
+
     res.json({
       usdTotalInputs,
       tlTotalInputs,
@@ -386,6 +404,9 @@ export const getAllAccountsTotal = asyncHandler(async (req, res) => {
       euroTotal,
       syrTotal,
       llTotal,
+      tlUsd,
+      syrUsd,
+      totalAllAccounts,
     })
   } else {
     res.status(404)
@@ -403,6 +424,7 @@ export const getPrimaryAccountTotal = asyncHandler(async (req, res) => {
       path: 'IOs',
       populate: { path: 'account' },
     })
+  const currencies = await Currency.find({})
   if (interactions) {
     const ios = interactions.map((interaction) => interaction.IOs)
     const maregedIos = [].concat.apply([], ios)
@@ -470,6 +492,21 @@ export const getPrimaryAccountTotal = asyncHandler(async (req, res) => {
     const syrTotal = addDecimal(syrTotalInputs - syrTotalOutputs)
     const llTotal = addDecimal(llTotalInputs - llTotalOutputs)
 
+    const allCurrencies = currencies[0]
+    const tlUsd = addDecimal(tlTotal / allCurrencies.tlUsd)
+    const euroUsd = addDecimal(euroTotal / allCurrencies.euroUsd)
+    const syrUsd = addDecimal(syrTotal / allCurrencies.syrUsd)
+    const llUsd = addDecimal(llTotal / allCurrencies.llUsd)
+    const totalPrimary = addDecimal(
+      [
+        Number(usdTotal),
+        Number(tlUsd),
+        Number(euroUsd),
+        Number(syrUsd),
+        Number(llUsd),
+      ].reduce((acc, item) => acc + item, 0)
+    )
+
     res.json({
       usdTotalInputs,
       tlTotalInputs,
@@ -486,6 +523,7 @@ export const getPrimaryAccountTotal = asyncHandler(async (req, res) => {
       euroTotal,
       syrTotal,
       llTotal,
+      totalPrimary,
     })
   } else {
     res.status(404)

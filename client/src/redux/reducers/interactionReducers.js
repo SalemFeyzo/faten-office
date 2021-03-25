@@ -47,6 +47,10 @@ import {
   TOTAL_SUCCESS,
   TOTAL_FAIL,
   TOTAL_RESET,
+  TOTAL_PRIMARY_REQUEST,
+  TOTAL_PRIMARY_SUCCESS,
+  TOTAL_PRIMARY_FAIL,
+  TOTAL_PRIMARY_RESET,
 } from '../constants/interactionConstants'
 
 export const interactionAddReducer = (state = { interaction: {} }, action) => {
@@ -227,6 +231,21 @@ export const totalsReducer = (state = {}, action) => {
     case TOTAL_FAIL:
       return { laoding: false, error: action.payload }
     case TOTAL_RESET:
+      return {}
+    default:
+      return state
+  }
+}
+
+export const totalPrimaryReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TOTAL_PRIMARY_REQUEST:
+      return { loading: true }
+    case TOTAL_PRIMARY_SUCCESS:
+      return { loading: false, total: action.payload }
+    case TOTAL_PRIMARY_FAIL:
+      return { laoding: false, error: action.payload }
+    case TOTAL_PRIMARY_RESET:
       return {}
     default:
       return state

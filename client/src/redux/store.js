@@ -24,8 +24,17 @@ import {
   interactionListReducer,
   interactionUpdateReducer,
   totalByAccoountReducer,
+  totalPrimaryReducer,
   totalsReducer,
 } from './reducers/interactionReducers'
+import {
+  capitalGetReducer,
+  capitalUpdateReducer,
+} from './reducers/capitalReducers'
+import {
+  currenciesGetReducer,
+  currenciesUpdateReducer,
+} from './reducers/currenciesReducers'
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -47,6 +56,11 @@ const reducer = combineReducers({
   interactionAddIO: interactionAddIOReducer,
   totalByAccount: totalByAccoountReducer,
   totals: totalsReducer,
+  totalPrimary: totalPrimaryReducer,
+  capitalGet: capitalGetReducer,
+  capitalUpdate: capitalUpdateReducer,
+  currenciesGet: currenciesGetReducer,
+  currenciesUpdate: currenciesUpdateReducer,
 })
 
 const PREFIX = 'faten-'
