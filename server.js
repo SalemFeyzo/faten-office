@@ -37,7 +37,7 @@ app.use('/api/capital', capitalRoutes)
 app.use('/api/currencies', currencyRoutes)
 
 // make upload folder acceble in the browser, make it static
-// const __dirname = path.resolve() //so we can us es module
+const __dirname = path.resolve() //so we can us es module
 // app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 if (process.env.NODE_ENV === 'production') {
