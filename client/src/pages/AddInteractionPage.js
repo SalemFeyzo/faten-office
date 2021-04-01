@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Button, Form, Card, Container } from 'react-bootstrap'
 import Select from 'react-select'
-import 'react-select-plus/dist/react-select-plus.css'
 import FormContainer from '../components/FormContainer'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -46,7 +45,6 @@ const InteractionTest = ({ history, match }) => {
     accounts.map((account) => {
       return { label: account.name, value: account._id }
     })
-  console.log(account)
   const interactionDetails = useSelector((state) => state.interactionDetails)
   const {
     loading: loadingInteractionDetails,

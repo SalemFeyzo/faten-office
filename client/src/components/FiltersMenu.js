@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Select from 'react-select'
 import close from '../assets/close.svg'
 import { ListGroup, Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,6 +24,11 @@ const FiltersMenu = ({
     error: errorAccounts,
     accounts,
   } = accountsList
+  const selectAccountOptions =
+    accounts &&
+    accounts.map((account) => {
+      return { label: account.name, value: account._id }
+    })
 
   const userList = useSelector((state) => state.userList)
   const { users } = userList
@@ -75,18 +81,16 @@ const FiltersMenu = ({
       <ListGroup.Item>
         <Form.Group controlId='accountId'>
           <Form.Label>الحساب</Form.Label>
-          <Form.Control
-            as='select'
-            onChange={(e) => setAccountId(e.target.value)}
-          >
-            <option value='1'>اختر الحساب</option>
-            {accounts &&
-              accounts.map((account) => (
-                <option key={account._id} value={account._id}>
-                  {account.name}
-                </option>
-              ))}
-          </Form.Control>
+
+          {accounts && (
+            <Select
+              placeholder='اختر'
+              isSearchable
+              options={selectAccountOptions}
+              value={selectAccountOptions.label}
+              onChange={(option) => setAccountId(option.value)}
+            />
+          )}
         </Form.Group>
       </ListGroup.Item>
       <ListGroup.Item>
