@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Button, Form, Card, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import Select from 'react-select'
+import 'react-select-plus/dist/react-select-plus.css'
 import FormContainer from '../components/FormContainer'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -40,6 +41,12 @@ const InteractionTest = ({ history, match }) => {
     accounts,
   } = accountsList
 
+  const selectAccountOptions =
+    accounts &&
+    accounts.map((account) => {
+      return { label: account.name, value: account._id }
+    })
+  console.log(account)
   const interactionDetails = useSelector((state) => state.interactionDetails)
   const {
     loading: loadingInteractionDetails,
@@ -206,18 +213,15 @@ const InteractionTest = ({ history, match }) => {
               </Form.Group>
               <Form.Group controlId='accountId'>
                 <Form.Label>الحساب</Form.Label>
-                <Form.Control
-                  as='select'
-                  onChange={(e) => setAccount(e.target.value)}
-                >
-                  <option value='1'>اختر الحساب</option>
-                  {accounts &&
-                    accounts.map((account) => (
-                      <option key={account._id} value={account._id}>
-                        {account.name}
-                      </option>
-                    ))}
-                </Form.Control>
+                {accounts && (
+                  <Select
+                    placeholder='اختر'
+                    isSearchable
+                    options={selectAccountOptions}
+                    value={selectAccountOptions.label}
+                    onChange={(option) => setAccount(option.value)}
+                  />
+                )}
               </Form.Group>
 
               <Button type='submit' variant='success' className='btn-block'>

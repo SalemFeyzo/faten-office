@@ -20,6 +20,8 @@ const Summary = ({ history }) => {
 
   const totalPrimary = useSelector((state) => state.totalPrimary)
   const { total: primaryTotal } = totalPrimary
+  const currenciesUpdate = useSelector((state) => state.currenciesUpdate)
+  const { success: successCurrenciesUpdate } = currenciesUpdate
 
   useEffect(() => {
     if (!userInfo) history.push('/')
@@ -29,7 +31,7 @@ const Summary = ({ history }) => {
     return () => {
       //
     }
-  }, [history, dispatch, userInfo])
+  }, [history, dispatch, userInfo, successCurrenciesUpdate])
 
   return (
     <Container>

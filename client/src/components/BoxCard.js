@@ -33,6 +33,8 @@ const BoxCard = ({ totalPrimary, totalAccoounts }) => {
   const { capital } = capitalGet
   const capitalUpdate = useSelector((state) => state.capitalUpdate)
   const { success } = capitalUpdate
+  const currenciesUpdate = useSelector((state) => state.currenciesUpdate)
+  const { success: successCurrenciesUpdate } = currenciesUpdate
   const bothTotal = addDecimal(
     Number(totalAccoounts) < 0
       ? Number(Math.abs(totalAccoounts)) + Number(totalPrimary)
@@ -43,7 +45,7 @@ const BoxCard = ({ totalPrimary, totalAccoounts }) => {
   useEffect(() => {
     dispatch(getCapital())
     return () => {}
-  }, [dispatch, success])
+  }, [dispatch, success, successCurrenciesUpdate])
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   return (
