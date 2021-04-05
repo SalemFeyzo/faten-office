@@ -21,11 +21,7 @@ h2 {
 h3 {
   padding: 1rem 0;
 }
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 .input {
   color: green;
 }
@@ -60,5 +56,13 @@ h3 {
   }
   .sidebar-opened {
     width: 100vw;
+  }
+  .footer-text {
+    font-size: small;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }

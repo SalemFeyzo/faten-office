@@ -35,6 +35,12 @@ import {
   currenciesGetReducer,
   currenciesUpdateReducer,
 } from './reducers/currenciesReducers'
+import {
+  currencyRateAddReducer,
+  currencyRateDeleteReducer,
+  currencyRateFinansGetReducer,
+  currencyRateGetReducer,
+} from './reducers/currencyRateReducers'
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -61,6 +67,10 @@ const reducer = combineReducers({
   capitalUpdate: capitalUpdateReducer,
   currenciesGet: currenciesGetReducer,
   currenciesUpdate: currenciesUpdateReducer,
+  currencyRateAdd: currencyRateAddReducer,
+  currencyRateGet: currencyRateGetReducer,
+  currencyRateFinansGet: currencyRateFinansGetReducer,
+  currencyRateDelete: currencyRateDeleteReducer,
 })
 
 const PREFIX = 'faten-'

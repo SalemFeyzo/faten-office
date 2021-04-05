@@ -70,18 +70,31 @@ export const deleteInteraction = asyncHandler(async (req, res) => {
 // @route GET /api/interactions
 // @access Private
 export const getAllInteractions = asyncHandler(async (req, res) => {
-  const interactions = await Interaction.find({})
+  const pageSize = 10
+  const page = Number(req.query.pageNumber) || 1
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      }
+    : {}
+  const count = await Interaction.countDocuments({ ...keyword })
+  const interactions = await Interaction.find({ ...keyword })
     .sort({ createdAt: 'desc' })
     .populate('user', 'name')
     .populate({
       path: 'IOs',
       populate: { path: 'account' },
     })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
   if (interactions) {
-    res.json(interactions)
+    res.json({ interactions, page, pages: Math.ceil(count / pageSize) })
   } else {
     res.status(404)
-    throw Error('لا يوجد حركات حاليا')
+    throw new Error('لا يوجد حركات حاليا')
   }
 })
 

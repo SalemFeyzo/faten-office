@@ -73,7 +73,12 @@ export const interactionListReducer = (state = {}, action) => {
     case INTERACTION_LIST_REQUEST:
       return { loading: true }
     case INTERACTION_LIST_SUCCESS:
-      return { loading: false, interactions: action.payload }
+      return {
+        loading: false,
+        interactions: action.payload.interactions,
+        pages: action.payload.pages,
+        page: action.payload.page,
+      }
     case INTERACTION_LIST_FAIL:
       return { laoding: false, error: action.payload }
     case INTERACTION_LIST_RESET:

@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <Navbar bg='light' variant='light' expand='lg' collapseOnSelect>
       <Container>
-        <LinkContainer to='/dashboard'>
+        <LinkContainer to='/'>
           <Navbar.Brand>
             <img
               src={logo}
@@ -46,6 +46,9 @@ const Header = () => {
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='ml-auto'>
+                <LinkContainer to='/adcurrencyrate'>
+                  <Nav.Link>تعديل سعر السوري</Nav.Link>
+                </LinkContainer>
                 <LinkContainer to='/account/summary'>
                   <Nav.Link>الموجز</Nav.Link>
                 </LinkContainer>

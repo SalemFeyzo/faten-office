@@ -49,7 +49,7 @@ const AccountDetailsPage = ({ match }) => {
           <Row>
             {total && (
               <>
-                <Col sm={12} md={12} lg={4} xl={4}>
+                <Col>
                   <ListGroup variant='flush'>
                     <h6>
                       <strong>صافي الحساب: </strong>
@@ -76,93 +76,51 @@ const AccountDetailsPage = ({ match }) => {
                       {total.tlTotal} TL{' '}
                       <img src={tl} width='20px' height='20px' alt='icon' />
                     </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.euroTotal > 0
-                        ? 'لكم'
-                        : total.euroTotal === 0
-                        ? ''
-                        : total.euroTotal < 0
-                        ? 'لنا'
-                        : ''}{' '}
-                      {total.euroTotal} EURO{' '}
-                      <img src={euro} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.syrTotal > 0
-                        ? 'لكم'
-                        : total.syrTotal === 0
-                        ? ''
-                        : total.syrTotal < 0
-                        ? 'لنا'
-                        : ''}{' '}
-                      {total.syrTotal} SYR{' '}
-                      <img src={syr} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.llTotal > 0
-                        ? 'لكم'
-                        : total.llTotal === 0
-                        ? ''
-                        : total.llTotal < 0
-                        ? 'لنا'
-                        : ''}{' '}
-                      {total.llTotal} LL{' '}
-                      <img src={ll} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Col>
-                <Col sm={12} md={12} lg={4} xl={4}>
-                  <ListGroup variant='flush'>
-                    <h6>
-                      <strong>مجموع المدخلات: </strong>
-                    </h6>
-                    <ListGroup.Item>
-                      {total.usdTotalInputs} USD{' '}
-                      <img src={usd} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.tlTotalInputs} TL{' '}
-                      <img src={tl} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.euroTotalInputs} EURO{' '}
-                      <img src={euro} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.syrTotalInputs} SYR{''}
-                      <img src={syr} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.llTotalInputs} LL{' '}
-                      <img src={ll} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Col>
-                <Col sm={12} md={12} lg={4} xl={4}>
-                  <ListGroup variant='flush'>
-                    <h6>
-                      <strong>مجموع المخرجات: </strong>
-                    </h6>
-                    <ListGroup.Item>
-                      {total.usdTotalOutputs} USD{' '}
-                      <img src={usd} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.tlTotalOutputs} TL{' '}
-                      <img src={tl} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.euroTotalOutputs} EURO{' '}
-                      <img src={euro} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.syrTotalOutputs} SYR{' '}
-                      <img src={syr} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      {total.llTotalOutputs} LL{' '}
-                      <img src={ll} width='20px' height='20px' alt='icon' />
-                    </ListGroup.Item>
+                    {total.euroTotal == 0 ? (
+                      ''
+                    ) : (
+                      <ListGroup.Item>
+                        {total.euroTotal > 0
+                          ? 'لكم'
+                          : total.euroTotal === 0
+                          ? ''
+                          : total.euroTotal < 0
+                          ? 'لنا'
+                          : ''}{' '}
+                        {total.euroTotal} EURO{' '}
+                        <img src={euro} width='20px' height='20px' alt='icon' />
+                      </ListGroup.Item>
+                    )}
+                    {total.syrTotal == 0 ? (
+                      ''
+                    ) : (
+                      <ListGroup.Item>
+                        {total.syrTotal > 0
+                          ? 'لكم'
+                          : total.syrTotal === 0
+                          ? ''
+                          : total.syrTotal < 0
+                          ? 'لنا'
+                          : ''}{' '}
+                        {total.syrTotal} SYR{' '}
+                        <img src={syr} width='20px' height='20px' alt='icon' />
+                      </ListGroup.Item>
+                    )}
+                    {total.llTotal == 0 ? (
+                      ''
+                    ) : (
+                      <ListGroup.Item>
+                        {total.llTotal > 0
+                          ? 'لكم'
+                          : total.llTotal === 0
+                          ? ''
+                          : total.llTotal < 0
+                          ? 'لنا'
+                          : ''}{' '}
+                        {total.llTotal} LL{' '}
+                        <img src={ll} width='20px' height='20px' alt='icon' />
+                      </ListGroup.Item>
+                    )}
                   </ListGroup>
                 </Col>
               </>
@@ -170,7 +128,7 @@ const AccountDetailsPage = ({ match }) => {
           </Row>
         </Card.Body>
       </Card>
-
+      <h5>الحركات:</h5>
       {interactions && (
         <Row>
           {interactions.map((interaction) => (

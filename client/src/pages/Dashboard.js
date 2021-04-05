@@ -5,6 +5,7 @@ import menu from '../assets/menu.svg'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import InteractionCard from '../components/InteractionCard'
+import Paginate from '../components/Paginate'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   listInteractions,
@@ -25,13 +26,18 @@ import {
   INTERACTION_LIST_RESET,
 } from '../redux/constants/interactionConstants'
 import FiltersMenu from '../components/FiltersMenu'
+import FormContainer from '../components/FormContainer'
+import SearchBox from '../components/SearchBox'
 
-const Dashboard = ({ history }) => {
+const Dashboard = ({ history, match }) => {
   const [accountId, setAccountId] = useState('')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [userId, setUserId] = useState('')
   const [interactionType, setInteractionType] = useState('')
+
+  const keyword = match.params.keyword
+  const pageNumber = match.params.pageNumber || 1
 
   const dispatch = useDispatch()
 
@@ -39,7 +45,13 @@ const Dashboard = ({ history }) => {
   const { userInfo } = userLogin
 
   const interactionList = useSelector((state) => state.interactionList)
-  const { loading, error, interactions: allInteractions } = interactionList
+  const {
+    loading,
+    error,
+    interactions: allInteractions,
+    page,
+    pages,
+  } = interactionList
 
   const interactionListByAccount = useSelector(
     (state) => state.interactionListByAccount
@@ -100,7 +112,7 @@ const Dashboard = ({ history }) => {
     } else {
       dispatch({ type: INTERACTION_LIST_BY_ACCOUNT_RESET })
       dispatch({ type: INTERACTION_LIST_BY_DATE_RESET })
-      dispatch(listInteractions())
+      dispatch(listInteractions(keyword, pageNumber))
     }
 
     if (addInteractionSuccess) {
@@ -121,6 +133,8 @@ const Dashboard = ({ history }) => {
     endDate,
     userId,
     interactionType,
+    keyword,
+    pageNumber,
   ])
 
   const addInteractionAndGo = () => {
@@ -161,6 +175,7 @@ const Dashboard = ({ history }) => {
             حركة جديدة
           </Button>
         </div>
+        {/* <FormContainer><SearchBox /></FormContainer> */}
         <img
           src={menu}
           style={{ cursor: 'pointer' }}
@@ -219,6 +234,13 @@ const Dashboard = ({ history }) => {
             ''
           )}
         </Container>
+        <Row>
+          <Paginate
+            pages={pages}
+            page={page}
+            keyword={keyword ? keyword : ''}
+          />
+        </Row>
       </Container>
     </>
   )

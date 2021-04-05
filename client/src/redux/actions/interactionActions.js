@@ -147,7 +147,10 @@ export const deleteInteraction = (id) => async (dispatch, getState) => {
   }
 }
 
-export const listInteractions = () => async (dispatch, getState) => {
+export const listInteractions = (keyword = '', pageNumber = '') => async (
+  dispatch,
+  getState
+) => {
   try {
     dispatch({ type: INTERACTION_LIST_REQUEST })
     const {
@@ -159,7 +162,10 @@ export const listInteractions = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const { data } = await axios.get(`/api/interactions`, config)
+    const { data } = await axios.get(
+      `/api/interactions?keyword=${keyword}&pageNumber=${pageNumber}`,
+      config
+    )
     dispatch({ type: INTERACTION_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({

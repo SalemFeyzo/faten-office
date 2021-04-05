@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Select from 'react-select'
 import close from '../assets/close.svg'
 import { ListGroup, Form, Button } from 'react-bootstrap'
@@ -17,6 +17,8 @@ const FiltersMenu = ({
   resetFilters,
   setInteractionType,
 }) => {
+  const [start, setStart] = useState('')
+  const [end, setEnd] = useState('')
   const dispatch = useDispatch()
   const accountsList = useSelector((state) => state.accountsList)
   const {
@@ -40,6 +42,12 @@ const FiltersMenu = ({
       //
     }
   }, [])
+
+  const submitDate = (e) => {
+    e.preventDefault()
+    setStartDate(start)
+    setEndDate(end)
+  }
 
   return (
     <ListGroup variant='flush' id='sidebar' className='sidebar-closed '>
@@ -95,24 +103,31 @@ const FiltersMenu = ({
       </ListGroup.Item>
       <ListGroup.Item>
         <ListGroup variant='flush'>
-          <ListGroup.Item>
-            <Form.Group controlId='start-date'>
-              <Form.Label>من تاريخ</Form.Label>
-              <Form.Control
-                type='date'
-                onChange={(e) => new Date(setStartDate(e.target.value))}
-              ></Form.Control>
-            </Form.Group>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Form.Group controlId='end-date'>
-              <Form.Label>الى تاريخ</Form.Label>
-              <Form.Control
-                type='date'
-                onChange={(e) => new Date(setEndDate(e.target.value))}
-              ></Form.Control>
-            </Form.Group>
-          </ListGroup.Item>
+          <Form onSubmit={submitDate}>
+            <ListGroup.Item>
+              <Form.Group controlId='start-date'>
+                <Form.Label>من تاريخ</Form.Label>
+                <Form.Control
+                  type='date'
+                  onChange={(e) => new Date(setStart(e.target.value))}
+                ></Form.Control>
+              </Form.Group>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Form.Group controlId='end-date'>
+                <Form.Label>الى تاريخ</Form.Label>
+                <Form.Control
+                  type='date'
+                  onChange={(e) => new Date(setEnd(e.target.value))}
+                ></Form.Control>
+              </Form.Group>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button type='submit' variant='success'>
+                طبق
+              </Button>
+            </ListGroup.Item>
+          </Form>
         </ListGroup>
       </ListGroup.Item>
       <ListGroup.Item>

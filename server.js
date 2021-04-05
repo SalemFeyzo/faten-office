@@ -11,6 +11,7 @@ import accountRoutes from './routes/accountRoutes.js'
 import interactionRoutes from './routes/interactionRoutes.js'
 import currencyRoutes from './routes/currencyRoutes.js'
 import capitalRoutes from './routes/capitalRoutes.js'
+import currencyRateRoutes from './routes/currencyRateRoutes.js'
 
 dotenv.config()
 
@@ -26,10 +27,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
-// app.get('/', (req, res) => {
-//   res.send('API is running....')
-// })
-
+app.use('/api/currencyrate', currencyRateRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/accounts', accountRoutes)
 app.use('/api/interactions', interactionRoutes)

@@ -48,7 +48,7 @@ const AccountsListPage = ({ history }) => {
       </div>
       {loading && <Loader />}
       {error && <Message variant='danger'>{error}</Message>}
-      <Row>
+      <Row className='mt-2'>
         <Col>
           <FormContainer>
             {accounts && (
