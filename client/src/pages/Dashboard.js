@@ -234,7 +234,7 @@ const Dashboard = ({ history, match }) => {
             ''
           )}
         </Container>
-        <Row>
+        <Row className='pagination-dash'>
           <Paginate
             pages={pages}
             page={page}
