@@ -41,7 +41,7 @@ const FiltersMenu = ({
     return () => {
       //
     }
-  }, [])
+  }, [dispatch])
 
   const submitDate = (e) => {
     e.preventDefault()

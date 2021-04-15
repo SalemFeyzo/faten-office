@@ -18,7 +18,6 @@ import {
 
 import {
   INTERACTION_ADD_RESET,
-  INTERACTION_DETAILS_RESET,
   INTERACTION_LIST_BY_ACCOUNT_RESET,
   INTERACTION_LIST_BY_DATE_RESET,
   INTERACTION_LIST_BY_TYPE_RESET,
@@ -26,8 +25,6 @@ import {
   INTERACTION_LIST_RESET,
 } from '../redux/constants/interactionConstants'
 import FiltersMenu from '../components/FiltersMenu'
-import FormContainer from '../components/FormContainer'
-import SearchBox from '../components/SearchBox'
 
 const Dashboard = ({ history, match }) => {
   const [accountId, setAccountId] = useState('')
@@ -74,11 +71,7 @@ const Dashboard = ({ history, match }) => {
   const { interactions: interactionsByType } = interactionListByType
 
   const interactionDelete = useSelector((state) => state.interactionDelete)
-  const {
-    loading: loadingDelete,
-    error: errorDelete,
-    success: successDelete,
-  } = interactionDelete
+  const { error: errorDelete, success: successDelete } = interactionDelete
 
   const interactionAdd = useSelector((state) => state.interactionAdd)
   const {
@@ -135,6 +128,7 @@ const Dashboard = ({ history, match }) => {
     interactionType,
     keyword,
     pageNumber,
+    interaction,
   ])
 
   const addInteractionAndGo = () => {

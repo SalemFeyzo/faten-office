@@ -2,11 +2,9 @@ import { useEffect } from 'react'
 import { ListGroup, Card } from 'react-bootstrap'
 import moment from 'moment'
 import 'moment/locale/ar-tn'
-import del from '../assets/delete.svg'
 import tl from '../assets/tl.svg'
 import usd from '../assets/usd.svg'
 import syr from '../assets/syr.svg'
-import edit from '../assets/edit.svg'
 import FormContainer from '../components/FormContainer'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -46,11 +44,7 @@ const HomePage = () => {
   const currencyRateFinansGet = useSelector(
     (state) => state.currencyRateFinansGet
   )
-  const {
-    loading: loadingFinans,
-    error: errorFinans,
-    currencyRateFinans,
-  } = currencyRateFinansGet
+  const { currencyRateFinans } = currencyRateFinansGet
 
   useEffect(() => {
     dispatch(getCurrencyRate())

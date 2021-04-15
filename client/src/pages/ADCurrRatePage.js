@@ -56,7 +56,8 @@ const ADCurrRatePage = ({ history }) => {
     return () => {
       //
     }
-  }, [history, dispatch, success, successDelete])
+    // eslint-disable-next-line
+  }, [history, dispatch, userInfo, success, successDelete])
 
   const onSubmitHandler = (e) => {
     e.preventDefault()

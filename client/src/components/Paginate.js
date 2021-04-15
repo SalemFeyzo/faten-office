@@ -10,8 +10,6 @@ const Paginate = ({ pages, page, keyword = '' }) => {
     size: 'md',
     threeDots: true,
     prevNext: true,
-    threeDots: true,
-    prevNext: true,
     onClick: function (p) {
       history.push(`/dashboard/page/${p}`)
     },

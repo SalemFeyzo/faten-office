@@ -64,7 +64,6 @@ const InteractionTest = ({ history, match }) => {
   const {
     loading: loadingInteractionAddIO,
     error: errorInteractionAddIO,
-    success: successInteractionAddIO,
   } = interactionAddIO
   const addDecimal = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2)
@@ -87,7 +86,15 @@ const InteractionTest = ({ history, match }) => {
     return () => {
       //
     }
-  }, [dispatch, id, successInteractionDetails, successInteractionUpdate])
+  }, [
+    dispatch,
+    id,
+    history,
+    userInfo,
+    interaction,
+    successInteractionDetails,
+    successInteractionUpdate,
+  ])
   const addIO = (e) => {
     e.preventDefault()
     setFormNum(formNum + 1)

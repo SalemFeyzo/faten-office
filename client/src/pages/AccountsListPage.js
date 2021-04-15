@@ -36,7 +36,7 @@ const AccountsListPage = ({ history }) => {
     return () => {
       //
     }
-  }, [dispatch, success])
+  }, [dispatch, history, success, userInfo])
   return (
     <Container>
       <div className='d-flex flex-row align-items-center justify-content-between'>

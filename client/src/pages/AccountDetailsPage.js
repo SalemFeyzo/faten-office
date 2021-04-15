@@ -76,7 +76,7 @@ const AccountDetailsPage = ({ match }) => {
                       {total.tlTotal} TL{' '}
                       <img src={tl} width='20px' height='20px' alt='icon' />
                     </ListGroup.Item>
-                    {total.euroTotal == 0 ? (
+                    {total.euroTotal === 0 ? (
                       ''
                     ) : (
                       <ListGroup.Item>
@@ -91,7 +91,7 @@ const AccountDetailsPage = ({ match }) => {
                         <img src={euro} width='20px' height='20px' alt='icon' />
                       </ListGroup.Item>
                     )}
-                    {total.syrTotal == 0 ? (
+                    {total.syrTotal === 0 ? (
                       ''
                     ) : (
                       <ListGroup.Item>
@@ -106,7 +106,7 @@ const AccountDetailsPage = ({ match }) => {
                         <img src={syr} width='20px' height='20px' alt='icon' />
                       </ListGroup.Item>
                     )}
-                    {total.llTotal == 0 ? (
+                    {total.llTotal === 0 ? (
                       ''
                     ) : (
                       <ListGroup.Item>
