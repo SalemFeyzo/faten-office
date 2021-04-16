@@ -10,7 +10,7 @@ const AllAccountsTotalCard = ({ total }) => {
     <Card className='mt-2'>
       <Card.Body>
         <Row>
-          <Col sm={12} md={12} lg={4} xl={4}>
+          <Col>
             <ListGroup variant='flush'>
               <h6>
                 <strong>صافي الحسابات حسب العملة: </strong>
@@ -68,60 +68,6 @@ const AllAccountsTotalCard = ({ total }) => {
                   ? 'لنا'
                   : ''}{' '}
                 {total.llTotal} LL{' '}
-                <img src={ll} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-          <Col sm={12} md={12} lg={4} xl={4}>
-            <ListGroup variant='flush'>
-              <h6>
-                <strong>مجموع المدخلات على الحسابات: </strong>
-              </h6>
-              <ListGroup.Item>
-                {total.usdTotalInputs} USD{' '}
-                <img src={usd} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {total.tlTotalInputs} TL{' '}
-                <img src={tl} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {total.euroTotalInputs} EURO{' '}
-                <img src={euro} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {total.syrTotalInputs} SYR{''}
-                <img src={syr} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {total.llTotalInputs} LL{' '}
-                <img src={ll} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-          <Col sm={12} md={12} lg={4} xl={4}>
-            <ListGroup variant='flush'>
-              <h6>
-                <strong>مجموع المخرجات من الحسابات: </strong>
-              </h6>
-              <ListGroup.Item>
-                {total.usdTotalOutputs} USD{' '}
-                <img src={usd} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {total.tlTotalOutputs} TL{' '}
-                <img src={tl} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {total.euroTotalOutputs} EURO{' '}
-                <img src={euro} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {total.syrTotalOutputs} SYR{' '}
-                <img src={syr} width='20px' height='20px' alt='icon' />
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {total.llTotalOutputs} LL{' '}
                 <img src={ll} width='20px' height='20px' alt='icon' />
               </ListGroup.Item>
             </ListGroup>
