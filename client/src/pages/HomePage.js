@@ -63,7 +63,7 @@ const HomePage = () => {
     currencyRateFinans && currencyRateFinans.USD.Selling.split(',').join('.')
   const buying =
     currencyRateFinans && currencyRateFinans.USD.Buying.split(',').join('.')
-  console.log(selling)
+
   return (
     <FormContainer>
       {loading && <Loader />}

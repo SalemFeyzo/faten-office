@@ -1,6 +1,12 @@
 import asyncHandler from 'express-async-handler'
 import Interaction from '../models/interactionModel.js'
 import Currency from '../models/currencyModel.js'
+import Account from '../models/accountModel.js'
+
+////
+const addDecimal = (num) => {
+  return (Math.round(num * 100) / 100).toFixed(2)
+}
 
 // @desc Add Interaction
 // @route POST /api/interactions
@@ -103,7 +109,6 @@ export const getAllInteractions = asyncHandler(async (req, res) => {
 // @access Private
 export const addIO = asyncHandler(async (req, res) => {
   const interaction = await Interaction.findById(req.params.id)
-
   if (interaction) {
     interaction.IOs.push(req.body)
     await interaction.save()
@@ -202,10 +207,6 @@ export const getInteractionsByDate = asyncHandler(async (req, res) => {
   }
 })
 
-////
-const addDecimal = (num) => {
-  return (Math.round(num * 100) / 100).toFixed(2)
-}
 // @desc Get  IOs By Account culc totals/ single account
 // @route GET /api/interactions/account/:id/io
 // @access Puplic

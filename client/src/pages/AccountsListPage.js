@@ -19,8 +19,8 @@ const AccountsListPage = ({ history }) => {
     accounts.map((account) => {
       return { label: account.name, value: account._id }
     })
-  console.log(accountId)
-  const slectedAccount =
+
+  const selectedAccount =
     accountId &&
     accounts &&
     accounts.filter((account) => account._id === accountId)
@@ -68,7 +68,7 @@ const AccountsListPage = ({ history }) => {
       </Row>
       <Row>
         {accountId
-          ? slectedAccount.map((account) => (
+          ? selectedAccount.map((account) => (
               <Col key={account._id} sm={12} md={12} lg={6} xl={6}>
                 <AccountCard account={account} />
               </Col>

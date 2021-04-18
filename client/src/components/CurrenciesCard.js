@@ -56,7 +56,7 @@ const CurrenciesCard = () => {
         <Card.Body>
           <ListGroup variant='flush'>
             <ListGroup.Item className='d-flex flex-row align-items-center justify-content-between'>
-              <spam>كل 1 دولار يساوي:</spam>{' '}
+              <span>كل 1 دولار يساوي:</span>{' '}
               <small>
                 {currencies &&
                   currencies.length > 0 &&
