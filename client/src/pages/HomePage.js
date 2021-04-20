@@ -5,6 +5,8 @@ import 'moment/locale/ar-tn'
 import tl from '../assets/tl.svg'
 import usd from '../assets/usd.svg'
 import syr from '../assets/syr.svg'
+import up from '../assets/up.svg'
+import down from '../assets/down.svg'
 import FormContainer from '../components/FormContainer'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -63,6 +65,9 @@ const HomePage = () => {
     currencyRateFinans && currencyRateFinans.USD.Selling.split(',').join('.')
   const buying =
     currencyRateFinans && currencyRateFinans.USD.Buying.split(',').join('.')
+  const change1 =
+    currencyRateFinans && currencyRateFinans.USD.Change.split(',').join('.')
+  const change = currencyRateFinans && change1.split('%')[1]
 
   return (
     <FormContainer>
@@ -83,7 +88,19 @@ const HomePage = () => {
                 مبيع: {addDecimal(Number(selling))}
               </ListGroup.Item>
               <ListGroup.Item>
-                شراء: {addDecimal(Number(buying) - 0.1)}
+                شراء: {addDecimal(Number(buying) - 0.05)}
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{ color: `${change > 0 ? 'green' : 'red'}` }}
+              >
+                <div className='d-flex flex-row justify-content-start align-items-baseline'>
+                  <span>{Number(change)}%</span>{' '}
+                  {Number(change) > 0 ? (
+                    <img src={up} width='30px' height='30px' alt='icon' />
+                  ) : (
+                    <img src={down} width='20px' height='20px' alt='icon' />
+                  )}
+                </div>
               </ListGroup.Item>
               <ListGroup.Item>
                 <small>
