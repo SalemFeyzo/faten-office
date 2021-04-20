@@ -71,11 +71,11 @@ const HomePage = () => {
 
       <Card>
         <Card.Body>
-          <h5>
-            <b>سعر الدولار مقابل الليرة التركية:</b>{' '}
+          <h6>
+            <b> الدولار مقابل الليرة التركية:</b>{' '}
             <img src={usd} width='20px' height='20px' alt='icon' />{' '}
             <img src={tl} width='20px' height='20px' alt='icon' />
-          </h5>
+          </h6>
 
           {currencyRateFinans && (
             <ListGroup variant='flush'>
@@ -99,11 +99,11 @@ const HomePage = () => {
 
       <Card className='mt-2'>
         <Card.Body>
-          <h5>
-            <b>سعر الدولار مقابل الليرة السورية:</b>{' '}
+          <h6>
+            <b> الدولار مقابل الليرة السورية:</b>{' '}
             <img src={usd} width='20px' height='20px' alt='icon' />{' '}
             <img src={syr} width='20px' height='20px' alt='icon' />{' '}
-          </h5>
+          </h6>
 
           {currencyRate && currencyRateFinans && (
             <ListGroup variant='flush'>
@@ -123,11 +123,11 @@ const HomePage = () => {
 
       <Card className='mt-2'>
         <Card.Body>
-          <h5>
-            <b>سعر الليرة التركية مقابل الليرة السورية:</b>{' '}
+          <h6>
+            <b> الليرة التركية مقابل الليرة السورية:</b>{' '}
             <img src={tl} width='20px' height='20px' alt='icon' />{' '}
             <img src={syr} width='20px' height='20px' alt='icon' />{' '}
-          </h5>
+          </h6>
 
           {currencyRate && (
             <ListGroup variant='flush'>

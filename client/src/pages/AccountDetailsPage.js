@@ -76,51 +76,71 @@ const AccountDetailsPage = ({ match }) => {
                       {total.tlTotal} TL{' '}
                       <img src={tl} width='20px' height='20px' alt='icon' />
                     </ListGroup.Item>
-                    {total.euroTotal === 0 ? (
-                      ''
-                    ) : (
-                      <ListGroup.Item>
-                        {total.euroTotal > 0
-                          ? 'لكم'
-                          : total.euroTotal === 0
-                          ? ''
-                          : total.euroTotal < 0
-                          ? 'لنا'
-                          : ''}{' '}
-                        {total.euroTotal} EURO{' '}
-                        <img src={euro} width='20px' height='20px' alt='icon' />
-                      </ListGroup.Item>
-                    )}
-                    {total.syrTotal === 0 ? (
-                      ''
-                    ) : (
-                      <ListGroup.Item>
-                        {total.syrTotal > 0
-                          ? 'لكم'
-                          : total.syrTotal === 0
-                          ? ''
-                          : total.syrTotal < 0
-                          ? 'لنا'
-                          : ''}{' '}
-                        {total.syrTotal} SYR{' '}
-                        <img src={syr} width='20px' height='20px' alt='icon' />
-                      </ListGroup.Item>
-                    )}
-                    {total.llTotal === 0 ? (
-                      ''
-                    ) : (
-                      <ListGroup.Item>
-                        {total.llTotal > 0
-                          ? 'لكم'
-                          : total.llTotal === 0
-                          ? ''
-                          : total.llTotal < 0
-                          ? 'لنا'
-                          : ''}{' '}
-                        {total.llTotal} LL{' '}
-                        <img src={ll} width='20px' height='20px' alt='icon' />
-                      </ListGroup.Item>
-                    )}
+
+                    {
+                      // eslint-disable-next-line
+                      total.euroTotal == 0 ? (
+                        ''
+                      ) : (
+                        <ListGroup.Item>
+                          {total.euroTotal > 0
+                            ? 'لكم'
+                            : total.euroTotal === 0
+                            ? ''
+                            : total.euroTotal < 0
+                            ? 'لنا'
+                            : ''}{' '}
+                          {total.euroTotal} EURO{' '}
+                          <img
+                            src={euro}
+                            width='20px'
+                            height='20px'
+                            alt='icon'
+                          />
+                        </ListGroup.Item>
+                      )
+                    }
+                    {
+                      // eslint-disable-next-line
+                      total.syrTotal == 0 ? (
+                        ''
+                      ) : (
+                        <ListGroup.Item>
+                          {total.syrTotal > 0
+                            ? 'لكم'
+                            : total.syrTotal === 0
+                            ? ''
+                            : total.syrTotal < 0
+                            ? 'لنا'
+                            : ''}{' '}
+                          {total.syrTotal} SYR{' '}
+                          <img
+                            src={syr}
+                            width='20px'
+                            height='20px'
+                            alt='icon'
+                          />
+                        </ListGroup.Item>
+                      )
+                    }
+                    {
+                      // eslint-disable-next-line
+                      total.llTotal == 0 ? (
+                        ''
+                      ) : (
+                        <ListGroup.Item>
+                          {total.llTotal > 0
+                            ? 'لكم'
+                            : total.llTotal === 0
+                            ? ''
+                            : total.llTotal < 0
+                            ? 'لنا'
+                            : ''}{' '}
+                          {total.llTotal} LL{' '}
+                          <img src={ll} width='20px' height='20px' alt='icon' />
+                        </ListGroup.Item>
+                      )
+                    }
                   </ListGroup>
                 </Col>
               </>
